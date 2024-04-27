@@ -7,10 +7,6 @@ docker compose down
 build project
 
 ```shell
-mvn -f ./person-service-grpc-common/pom.xml clean install
-```
-
-```shell
 mvn clean package
 ```
 
