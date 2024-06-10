@@ -1,6 +1,5 @@
 package utils;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -30,16 +29,32 @@ public class GenerateUser {
                 + 100) +
                 "-" + (r.nextInt(89) + 10) + "-" + (r.nextInt(89) + 10);
         boolean female = r.nextInt(2) == 0;
-        person.setFirstname(randomFirstName(female));
-        person.setLastname(randomLastName(female));
-        person.setPatronymic(randomPatronymic(female));
-        person.setEmail(StringGenerator.generateRandomEmail(6));
-        person.setPhoneNumber(phone);
-        person.setSkype("live:"+StringGenerator.genLatin(8));
-        person.setTelegram(StringGenerator.genLatin(8));
-        person.setMaxExplorers(
-                person.getIsKeeper().equals(true) ? r.nextInt(4) : 0
-        );
+        if (person.getFirstName() == null){
+            person.setFirstName(randomFirstName(female));
+        }
+        if (person.getLastName() == null){
+            person.setLastName(randomLastName(female));
+        }
+        if (person.getPatronymic() == null){
+            person.setPatronymic(randomPatronymic(female));
+        }
+        if (person.getEmail() == null){
+            person.setEmail(StringGenerator.generateRandomEmail(6));
+        }
+        if (person.getPhoneNumber() == null){
+            person.setPhoneNumber(phone);
+        }
+        if (person.getSkype() == null){
+            person.setSkype("live:"+StringGenerator.genLatin(8));
+        }
+        if (person.getTelegram() == null){
+            person.setTelegram(StringGenerator.genLatin(8));
+        }
+        if (person.getMaxExplorers() == 0){
+            person.setMaxExplorers(
+                    person.getIsKeeper().equals(true) ? r.nextInt(4) : 0
+            );
+        }
         return person;
     }
 }

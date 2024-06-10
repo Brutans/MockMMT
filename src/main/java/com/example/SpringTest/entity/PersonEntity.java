@@ -19,25 +19,30 @@ public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;// post
-    private String password;// post
-    private String firstname;
-    private String lastname;
+    @Transient
+    private Long employeeId;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
     private String patronymic;
     @CreatedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime registrationDate;
     @Column(nullable = false)
-    private int maxExplorers;// post
+    private int maxExplorers;
     @Column(nullable = false)
     private String email;
     private String phoneNumber;
     private String skype;
     private String telegram;
     @Column(nullable = false)
-    private Boolean isVisiblePrivateData; // post
-    private Boolean isKeeper; //post
+    private Boolean isVisiblePrivateData;
+    private Boolean isKeeper;
 
     public PersonEntity() {
+    }
+    public Long getEmployeeId() {
+        return id;
     }
 }
